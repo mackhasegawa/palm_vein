@@ -5,7 +5,7 @@
 % Load images
 IMG = imread('00000000.jpeg');
 % Croppping
-bw_thres = 0.5;
+bw_thres = 0.5; % 調整必要
 IMG = cropIR2(IMG,bw_thres);
 IMG = imresize(IMG,[256 256]);
 IMG(:,:,1) = imadjust(IMG(:,:,1));
@@ -18,7 +18,7 @@ IMG0 = IMG;
 % Load images
 IMG = imread('10000000.jpeg');
 % Croppping
-bw_thres = 0.05;
+bw_thres = 0.05; % 調整必要
 IMG = cropIR2(IMG,bw_thres);
 IMG = imresize(IMG,[256 256]);
 IMG(:,:,1) = imadjust(IMG(:,:,1));
