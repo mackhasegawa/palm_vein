@@ -11,7 +11,7 @@ IMG = imresize(IMG,[256 256]);
 IMG(:,:,1) = imadjust(IMG(:,:,1));
 IMG(:,:,2) = imadjust(IMG(:,:,2));
 IMG(:,:,3) = imadjust(IMG(:,:,3));
-imagesc(IMG); colorbar;
+imagesc(IMG); colorbar; axis image;
 pause;
 IMG0 = IMG;
 
@@ -24,7 +24,7 @@ IMG = imresize(IMG,[256 256]);
 IMG(:,:,1) = imadjust(IMG(:,:,1));
 IMG(:,:,2) = imadjust(IMG(:,:,2));
 IMG(:,:,3) = imadjust(IMG(:,:,3));
-imagesc(IMG); colorbar;
+imagesc(IMG); colorbar; axis image;
 pause;
 
 IMG = [IMG IMG0];

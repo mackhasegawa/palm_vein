@@ -8,7 +8,7 @@ IMG = rgb2gray(IMG);
 
 % Binarisation
 BW = im2bw(IMG,bw_thres);  
-imagesc(BW); colorbar;
+imagesc(BW); colorbar;  axis image;
 pause;
 
 % Representation in the form of squares
