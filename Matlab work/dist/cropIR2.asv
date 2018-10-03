@@ -1,15 +1,15 @@
-function [IMG] = cropIR2(IMG,bw_thres)
+function [IMG] = cropIR2(IMG)
 % This function allows you to crop a square of the image of 
 % the hand according to the points drawn.
 % Debug by hasegawa
 
-img_size = 500;
+static_var;
 
 % Grayscale
 I = rgb2gray(IMG);
 
 % Find corners of the square
-[C1,C2,C3,C4] = searchCorner2(IMG,bw_thres);
+[C1,C2,C3,C4] = searchCorner2(IMG);
 
 % Bub fix by hasegawa
 C1(3) = fix(C1(1)/size(IMG,2)*2)*img_size;
@@ -19,7 +19,7 @@ C2(4) = fix(C2(2)/size(IMG,1)*2)*img_size;
 C3(3) = fix(C3(1)/size(IMG,2)*2)*img_size;
 C3(4) = fix(C3(2)/size(IMG,1)*2)*img_size;
 C4(3) = fix(C4(1)/size(IMG,2)*2)*img_size;
-C4(4) = fix(C4(2)/size(IMG,1)*2)*img_size;
+C4(4) = fix(C4(2)/size(IMG,1)*2)*SZ;
 
 % Transform the two images (RGB and NIR) so that the points form a square.
 movingPoints = [C2(1) C2(2); C1(1) C1(2); C3(1) C3(2); C4(1) C4(2)];
@@ -29,7 +29,7 @@ tform = fitgeotrans(movingPoints,fixedPoints,'projective');
 IMG = imwarp(IMG,tform,'FillValues',255);
 
 % Find the new corners to crop
-[C1,C2,C3,C4] = searchCorner2(IMG,bw_thres);
+[C1,C2,C3,C4] = searchCorner2(IMG);
 
 C = fix([C1(1) C1(2); C2(1) C2(2); C3(1) C3(2); C4(1) C4(2)]);
 P = fix([C(1,1)+C(1,2); C(2,1)+C(2,2); C(3,1)+C(3,2); C(4,1)+C(4,2)]);

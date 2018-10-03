@@ -1,18 +1,18 @@
-function [C1,C2,C3,C4] = searchCorner2(IMG,bw_thres)
+function [C1,C2,C3,C4] = searchCorner3(img)
 % This function allows to find the points on a hand
-% Before transformation with japanese hand
+% After transformation with japanese hand
 % For NIR image
 
 % Grayscale
-IMG = rgb2gray(IMG);
+gray_img = rgb2gray(img);
 
 % Binarisation
-BW = im2bw(IMG,bw_thres);  
-imagesc(BW); colorbar;
-pause;
+bw_img= im2bw(gray_img,0.03);  
+
+bw_img = im2bw(gray_img,0.5);  
 
 % Representation in the form of squares
-[B,L] = bwboundaries(BW,'noholes');
+[B,L] = bwboundaries(bw_img,'noholes');
 se1=strel('square',20);
 L_erode=imerode(L,se1,'same'); 
 
@@ -27,7 +27,7 @@ L = zeros(n);
 while i>0
     j = n;
     while j>0
-        if A(i)>(A(j)-700) && A(i)<(A(j)+700)
+        if A(i)>(A(j)-350) && A(i)<(A(j)+350)
             L(i,j)=A(j);
         end
         j = j-1;
