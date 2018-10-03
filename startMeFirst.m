@@ -3,9 +3,9 @@
 % from a palm of a Japanese hand
 
 % Load images
-IMG = imread('00000000.jpeg');
+IMG = imread('00000000.bmp');
 % Croppping
-bw_thres = 0.5; % 調整必要
+bw_thres = 0.05; % 調整必要
 IMG = cropIR2(IMG,bw_thres);
 IMG = imresize(IMG,[256 256]);
 IMG(:,:,1) = imadjust(IMG(:,:,1));
@@ -16,9 +16,9 @@ pause;
 IMG0 = IMG;
 
 % Load images
-IMG = imread('10000000.jpeg');
+IMG = imread('10000000.bmp');
 % Croppping
-bw_thres = 0.05; % 調整必要
+bw_thres = 0.1; % 調整必要
 IMG = cropIR2(IMG,bw_thres);
 IMG = imresize(IMG,[256 256]);
 IMG(:,:,1) = imadjust(IMG(:,:,1));

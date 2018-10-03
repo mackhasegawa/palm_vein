@@ -48,17 +48,13 @@ while i>1 && found == false
 end
 l = i+1;
 
+
+
 % Search positions of these 4 regions
 m = find(L(l,:)~=0);
-
-P = 2; %find(A==L(l,m(1)))
-C1 = double(stats(P(1)).Centroid);
-P = 3; %find(A==L(l,m(2)))
-C2 = double(stats(P(1)).Centroid);
-P = 4; %find(A==L(l,m(3)))
-C3 = double(stats(P(1)).Centroid);
-P = 5; %find(A==L(l,m(4)))
-C4 = double(stats(P(1)).Centroid);
-
+C1 = double(stats(find(A==L(l,m(1)))).Centroid);
+C2 = double(stats(find(A==L(l,m(2)))).Centroid);
+C3 = double(stats(find(A==L(l,m(3)))).Centroid);
+C4 = double(stats(find(A==L(l,m(4)))).Centroid);
 end
 
