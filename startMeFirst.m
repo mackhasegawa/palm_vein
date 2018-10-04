@@ -13,6 +13,7 @@ imagesc(IMG); colorbar; axis image;
 pause;
 
 IMG = [IMG IMG0];
+
 imwrite(IMG,'result.jpg');
 imagesc(IMG); colorbar; axis image;
 
