@@ -1,0 +1,24 @@
+
+file_name = uigetfile('*');
+IMG = imread(file_name);
+
+IMG0 = IMG(:,1:256,:);
+IMG = IMG(:,257:512,:);
+
+for i=1:9
+    deg = rand*30
+    IMG0 = imrotate(IMG0,deg);
+    IMG = imrotate(IMG,deg);
+
+    imagesc(IMG); colorbar; axis image;
+    [x,y] = getpts;
+    P = [x y];
+    IMG = imcrop(IMG, [P(1,1) P(1,2) P(2,1)-P(1,1) P(2,1)-P(1,1)]);
+    IMG = imresize(IMG,[256 256]);
+    IMG0 = imcrop(IMG0, [P(1,1) P(1,2) P(2,1)-P(1,1) P(2,1)-P(1,1)]);
+    IMG0 = imresize(IMG0,[256 256]);
+
+    IMG = [IMG0 IMG];
+
+    imwrite(IMG,'result.jpg');
+imagesc(IMG); colorbar; axis image;
